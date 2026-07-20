@@ -1,7 +1,6 @@
 "use client";
 
-import { Laptop, Code, Sparkles, Terminal, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Laptop, Code, Sparkles, Terminal } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -15,41 +14,13 @@ import { SectionContainer } from "@/components/ui/section-container";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Divider } from "@/components/ui/divider";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
+import { Hero } from "@/components/sections/hero";
 
 export default function ShowcasePage() {
   return (
     <div className="space-y-6">
-      {/* Hero-like Section Container (Showcase) */}
-      <SectionContainer delay={0.1}>
-        <div className="flex flex-col items-center gap-4 text-center">
-          <Badge
-            variant="outline"
-            className="border-brand-primary/30 bg-brand-primary/5 text-brand-primary hover:bg-brand-primary/10 rounded-full px-4 py-1 text-xs tracking-wider uppercase"
-          >
-            Design System Ready
-          </Badge>
-          <h1 className="text-foreground text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-            David Rahmadana
-          </h1>
-          <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed font-light sm:text-xl">
-            Selamat datang di fondasi portofolio profesional! Halaman ini adalah
-            showcase dari seluruh komponen UI reusable dan sistem desain yang
-            telah kita bangun.
-          </p>
-          <div className="mt-4 flex flex-wrap justify-center gap-3">
-            <Button className="bg-brand-primary hover:bg-brand-primary/90 rounded-full px-6 text-white">
-              Primary Button
-              <IconWrapper icon={ArrowRight} size="sm" className="ml-1" />
-            </Button>
-            <Button variant="secondary" className="rounded-full px-6">
-              Secondary Button
-            </Button>
-            <Button variant="outline" className="rounded-full px-6">
-              Outline Button
-            </Button>
-          </div>
-        </div>
-      </SectionContainer>
+      {/* Hero Section */}
+      <Hero />
 
       <Divider variant="gradient" />
 
