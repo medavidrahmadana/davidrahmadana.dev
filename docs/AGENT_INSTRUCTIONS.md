@@ -87,17 +87,17 @@ Follow a feature-oriented structure.
 Example:
 
 src/
-    app/
-    components/
-        layout/
-        sections/
-        ui/
-    hooks/
-    lib/
-    constants/
-    types/
-    data/
-    styles/
+app/
+components/
+layout/
+sections/
+ui/
+hooks/
+lib/
+constants/
+types/
+data/
+styles/
 
 ---
 
