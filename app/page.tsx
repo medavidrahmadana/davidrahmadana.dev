@@ -15,12 +15,24 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { Divider } from "@/components/ui/divider";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
 import { Hero } from "@/components/sections/hero";
+import { About } from "@/components/sections/about";
+import { Experience } from "@/components/sections/experience";
 
 export default function ShowcasePage() {
   return (
     <div className="space-y-6">
       {/* Hero Section */}
       <Hero />
+
+      <Divider variant="gradient" />
+
+      {/* About Section */}
+      <About />
+
+      <Divider variant="gradient" />
+
+      {/* Experience Section */}
+      <Experience />
 
       <Divider variant="gradient" />
 
