@@ -1,103 +1,194 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { Laptop, Code, Sparkles, Terminal, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { SectionContainer } from "@/components/ui/section-container";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Divider } from "@/components/ui/divider";
+import { IconWrapper } from "@/components/ui/icon-wrapper";
+
+export default function ShowcasePage() {
   return (
-    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-sans sm:p-20">
-      <main className="row-start-2 flex flex-col items-center gap-[32px] sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-center font-mono text-sm/6 sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="rounded bg-black/[.05] px-1 py-0.5 font-mono font-semibold dark:bg-white/[.06]">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex flex-col items-center gap-4 sm:flex-row">
-          <a
-            className="bg-foreground text-background flex h-10 items-center justify-center gap-2 rounded-full border border-solid border-transparent px-4 text-sm font-medium transition-colors hover:bg-[#383838] sm:h-12 sm:w-auto sm:px-5 sm:text-base dark:hover:bg-[#ccc]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="space-y-6">
+      {/* Hero-like Section Container (Showcase) */}
+      <SectionContainer delay={0.1}>
+        <div className="flex flex-col items-center gap-4 text-center">
+          <Badge
+            variant="outline"
+            className="border-brand-primary/30 bg-brand-primary/5 text-brand-primary hover:bg-brand-primary/10 rounded-full px-4 py-1 text-xs tracking-wider uppercase"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="flex h-10 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-4 text-sm font-medium transition-colors hover:border-transparent hover:bg-[#f2f2f2] sm:h-12 sm:w-auto sm:px-5 sm:text-base md:w-[158px] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Design System Ready
+          </Badge>
+          <h1 className="text-foreground text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+            David Rahmadana
+          </h1>
+          <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed font-light sm:text-xl">
+            Selamat datang di fondasi portofolio profesional! Halaman ini adalah
+            showcase dari seluruh komponen UI reusable dan sistem desain yang
+            telah kita bangun.
+          </p>
+          <div className="mt-4 flex flex-wrap justify-center gap-3">
+            <Button className="bg-brand-primary hover:bg-brand-primary/90 rounded-full px-6 text-white">
+              Primary Button
+              <IconWrapper icon={ArrowRight} size="sm" className="ml-1" />
+            </Button>
+            <Button variant="secondary" className="rounded-full px-6">
+              Secondary Button
+            </Button>
+            <Button variant="outline" className="rounded-full px-6">
+              Outline Button
+            </Button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex flex-wrap items-center justify-center gap-[24px]">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </SectionContainer>
+
+      <Divider variant="gradient" />
+
+      {/* Grid of Custom Components */}
+      <SectionContainer delay={0.2}>
+        <SectionHeader
+          badge="Komponen Utama"
+          title="Showcase Komponen UI"
+          subtitle="Daftar komponen dasar yang siap digunakan untuk membangun halaman utama portofolio."
+          align="center"
+        />
+
+        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {/* Card 1 */}
+          <Card className="border-border/60 bg-card/60 hover:border-brand-primary/30 backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="bg-brand-primary/10 rounded-lg p-2">
+                  <IconWrapper icon={Code} variant="brand" size="md" />
+                </div>
+                <CardTitle className="text-lg">Clean Architecture</CardTitle>
+              </div>
+              <CardDescription className="pt-2">
+                Struktur proyek terorganisir dengan modularitas yang tinggi.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="text-muted-foreground text-sm font-light">
+              Mendukung routing Next.js 15, path alias kustom, formatting
+              terpadu dengan Prettier, dan linter statis ESLint yang super
+              ketat.
+            </CardContent>
+            <CardFooter className="flex items-center justify-between text-xs">
+              <span className="text-muted-foreground">Tech: Next.js + TS</span>
+              <Badge variant="outline" className="rounded-full text-[10px]">
+                Active
+              </Badge>
+            </CardFooter>
+          </Card>
+
+          {/* Card 2 */}
+          <Card className="border-border/60 bg-card/60 hover:border-brand-secondary/30 backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="bg-brand-secondary/10 rounded-lg p-2">
+                  <IconWrapper icon={Laptop} variant="accent" size="md" />
+                </div>
+                <CardTitle className="text-lg">Design System</CardTitle>
+              </div>
+              <CardDescription className="pt-2">
+                Warna, tipografi, dan animasi terpusat secara konsisten.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="text-muted-foreground text-sm font-light">
+              Didesain menggunakan skema variabel CSS Tailwind CSS v4 dengan
+              gamut warna OKLCH yang kaya dan smooth di layar modern.
+            </CardContent>
+            <CardFooter className="flex items-center justify-between text-xs">
+              <span className="text-muted-foreground">
+                Styling: Tailwind v4
+              </span>
+              <Badge
+                variant="secondary"
+                className="bg-brand-secondary/15 text-brand-secondary border-brand-secondary/20 rounded-full text-[10px]"
+              >
+                Stable
+              </Badge>
+            </CardFooter>
+          </Card>
+
+          {/* Card 3 */}
+          <Card className="border-border/60 bg-card/60 hover:border-brand-accent/30 backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="bg-brand-accent/10 rounded-lg p-2">
+                  <IconWrapper
+                    icon={Sparkles}
+                    size="md"
+                    className="text-brand-accent"
+                  />
+                </div>
+                <CardTitle className="text-lg">Micro-Animations</CardTitle>
+              </div>
+              <CardDescription className="pt-2">
+                Animasi transisi halus bertenaga Framer Motion.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="text-muted-foreground text-sm font-light">
+              Semua konten pembungkus seperti SectionContainer dan SectionHeader
+              mendukung efek visual entrance fade/slide yang sangat ramah
+              performa.
+            </CardContent>
+            <CardFooter className="flex items-center justify-between text-xs">
+              <span className="text-muted-foreground">Anim: Framer Motion</span>
+              <Badge variant="outline" className="rounded-full text-[10px]">
+                Interactive
+              </Badge>
+            </CardFooter>
+          </Card>
+        </div>
+      </SectionContainer>
+
+      <Divider variant="gradient" />
+
+      {/* Spacing & Badges Showcase */}
+      <SectionContainer delay={0.3}>
+        <div className="border-border bg-card/40 mx-auto max-w-3xl rounded-2xl border p-6 md:p-8">
+          <div className="mb-4 flex items-center gap-2">
+            <IconWrapper icon={Terminal} variant="muted" size="sm" />
+            <h3 className="text-base font-semibold tracking-tight">
+              System Info
+            </h3>
+          </div>
+          <p className="text-muted-foreground mb-6 text-sm leading-relaxed font-light">
+            Di bawah ini adalah variasi Badge yang dapat kamu gunakan sebagai
+            penanda teknologi (Tags) pada detail portofolio atau pengalaman
+            kerjamu.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Badge className="bg-brand-primary border-brand-primary/20 rounded-full px-3 text-white">
+              Next.js 15
+            </Badge>
+            <Badge className="bg-brand-secondary border-brand-secondary/20 rounded-full px-3 text-white">
+              Tailwind CSS v4
+            </Badge>
+            <Badge className="bg-brand-accent border-brand-accent/20 rounded-full px-3 text-white">
+              TypeScript
+            </Badge>
+            <Badge variant="secondary" className="rounded-full px-3">
+              Framer Motion
+            </Badge>
+            <Badge variant="outline" className="rounded-full px-3">
+              Lucide Icons
+            </Badge>
+            <Badge variant="destructive" className="rounded-full px-3">
+              Strict Quality
+            </Badge>
+          </div>
+        </div>
+      </SectionContainer>
     </div>
   );
 }
