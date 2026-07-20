@@ -5,12 +5,12 @@ import { cn } from "@/lib/utils";
 interface IconWrapperProps extends React.HTMLAttributes<HTMLSpanElement> {
   icon: LucideIcon;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
-  variant?: "default" | "brand" | "muted" | "accent";
+  variant?: "default" | "brand" | "muted" | "accent" | "inherit";
 }
 
 export const IconWrapper = React.forwardRef<HTMLSpanElement, IconWrapperProps>(
   (
-    { className, icon: Icon, size = "md", variant = "default", ...props },
+    { className, icon: Icon, size = "md", variant = "inherit", ...props },
     ref
   ) => {
     const sizeClasses = {
@@ -26,6 +26,7 @@ export const IconWrapper = React.forwardRef<HTMLSpanElement, IconWrapperProps>(
       brand: "text-brand-primary",
       muted: "text-muted-foreground",
       accent: "text-brand-accent",
+      inherit: "",
     };
 
     return (
