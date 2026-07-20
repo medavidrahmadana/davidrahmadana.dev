@@ -17,6 +17,8 @@ import { IconWrapper } from "@/components/ui/icon-wrapper";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
+import { Skills } from "@/components/sections/skills";
+import { Projects } from "@/components/sections/projects";
 
 export default function ShowcasePage() {
   return (
@@ -33,6 +35,16 @@ export default function ShowcasePage() {
 
       {/* Experience Section */}
       <Experience />
+
+      <Divider variant="gradient" />
+
+      {/* Skills Section */}
+      <Skills />
+
+      <Divider variant="gradient" />
+
+      {/* Projects Section */}
+      <Projects />
 
       <Divider variant="gradient" />
 
