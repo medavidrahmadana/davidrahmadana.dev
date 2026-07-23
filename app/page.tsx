@@ -19,7 +19,8 @@ import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
 import { Skills } from "@/components/sections/skills";
 import { Projects } from "@/components/sections/projects";
-
+import { Achievements } from "@/components/sections/achievements";
+import { Contact } from "@/components/sections/contact";
 export default function ShowcasePage() {
   return (
     <div className="space-y-6">
@@ -46,6 +47,10 @@ export default function ShowcasePage() {
       {/* Projects Section */}
       <Projects />
 
+      <Divider variant="gradient" />
+      <Achievements />
+      <Divider variant="gradient" />
+      <Contact />
       <Divider variant="gradient" />
 
       {/* Grid of Custom Components */}
