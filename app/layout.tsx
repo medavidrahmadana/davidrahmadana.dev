@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { PremiumEffects } from "@/components/ui/premium-effects";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,15 +67,16 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Navbar />
+          <PremiumEffects />
 
           {/* Main Content Area */}
-          <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+          <main className="mx-auto w-full max-w-[1440px] flex-1 px-4 py-8 sm:px-8 lg:px-12">
             {children}
           </main>
 
           {/* Placeholder: Footer */}
           <footer className="border-border bg-muted/40 w-full border-t">
-            <div className="mx-auto flex h-16 max-w-7xl items-center justify-center px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-center px-4 sm:px-6 lg:px-8">
               <span className="text-muted-foreground text-xs">
                 © {new Date().getFullYear()} David Rahmadana. All rights
                 reserved.

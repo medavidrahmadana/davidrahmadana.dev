@@ -9,10 +9,10 @@ export interface Achievement {
 
 export const achievementsData: Achievement[] = [
   {
-    title: 'Best Mobile App Award',
-    organization: 'Tech Innovation Awards',
-    date: '2022-11',
-    description: 'Recognized for outstanding UI/UX and performance in the Android market.',
+    title: 'Employee of the Month for May',
+    organization: 'PT Cubiconia Kanaya Pratama',
+    date: '2026-05',
+    description: 'Awarded Best Employee of the Month in May after 3 months of service, announced at the monthly internal meeting on June 6, 2026.',
     icon: require('lucide-react').Award,
     badge: 'Award',
   },
