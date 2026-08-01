@@ -121,6 +121,10 @@ export function Contact() {
                   <a href={info.value} className="inline-flex items-center text-xs font-semibold text-brand-primary hover:underline" download>
                     Download CV &rarr;
                   </a>
+                ) : info.type === "location" ? (
+                  <a href={`https://maps.google.com/?q=${encodeURIComponent(info.value)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-xs font-semibold text-brand-primary hover:underline">
+                    Visit Location &rarr;
+                  </a>
                 ) : (
                   <a href={info.value} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-xs font-semibold text-brand-primary hover:underline">
                     Visit Profile &rarr;
