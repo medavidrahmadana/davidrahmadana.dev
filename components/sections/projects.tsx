@@ -269,7 +269,7 @@ export function Projects() {
                                           alt={`Frontend UI Preview slide ${slideIdx + 1}`}
                                           fill
                                           priority={slideIdx === 0}
-                                          className="object-cover object-top"
+                                          className="object-contain object-top p-1"
                                         />
                                       ) : null}
                                     </div>
@@ -550,7 +550,7 @@ export function Projects() {
                                           alt={`${project.title} slide ${slideIdx + 1}`}
                                           fill
                                           priority={slideIdx === 0}
-                                          className="object-cover object-top"
+                                          className="object-contain object-top p-1 sm:p-2"
                                         />
                                       </div>
                                     ))}

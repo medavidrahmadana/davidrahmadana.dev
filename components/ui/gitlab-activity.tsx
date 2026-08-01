@@ -101,7 +101,10 @@ export function GitLabActivity() {
             {/* Month Labels Row */}
             <div className="flex gap-[3.5px] w-full">
               {monthsData.map((m, idx) => (
-                <div key={idx} className="flex-1 text-center">
+                <div 
+                  key={idx} 
+                  className={`flex-1 text-center ${idx !== monthsData.length - 1 ? "mr-2.5" : ""}`}
+                >
                   <span className="text-[9px] text-muted-foreground/80 font-bold block text-center">
                     {m.label}
                   </span>
@@ -109,10 +112,13 @@ export function GitLabActivity() {
               ))}
             </div>
 
-            {/* Continuous 30 Columns Stream Grid */}
+            {/* Continuous 30 Columns Stream Grid with Month Spacers */}
             <div className="flex gap-[3.5px] h-[98px]">
               {activityData.map((col, colIdx) => (
-                <div key={colIdx} className="flex flex-col gap-[3.5px]">
+                <div 
+                  key={colIdx} 
+                  className={`flex flex-col gap-[3.5px] ${(colIdx + 1) % 5 === 0 && colIdx !== activityData.length - 1 ? "mr-2.5" : ""}`}
+                >
                   {col.map((level, dIndex) => {
                     if (level === -1) {
                       return (
