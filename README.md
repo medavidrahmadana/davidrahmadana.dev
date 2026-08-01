@@ -1,83 +1,86 @@
-# David Rahmadana - Portfolio Website
+# David Gholi Rahmadana - Professional Software Engineer Portfolio
 
-Proyek ini adalah fondasi situs portofolio personal David Gholi Rahmadana, dibangun menggunakan **Next.js 15**, **TypeScript**, **Tailwind CSS v4**, dan **App Router**. Proyek ini dirancang agar memiliki arsitektur yang bersih, skalabel, dan siap untuk produksi (production-ready).
+Personal portfolio website of **David Gholi Rahmadana**, a Full-Stack Software Engineer specializing in modern web and mobile applications with Laravel, Vue.js, Nuxt.js, Next.js, Flutter, and RESTful APIs.
+
+Live Website: [https://davidrahmadana-dev.vercel.app](https://davidrahmadana-dev.vercel.app)
 
 ---
 
-## 🛠️ Tech Stack & Dependencies
+## ✨ Features
 
-- **Core Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+- 🎨 **Modern Bento Grid Layout**: Visually captivating, symmetrical bento grid architecture for Skills & About sections.
+- 💻 **Interactive Screenshot Carousels**: Auto-sliding 3D browser and 19.5:9 smartphone mockups with slide controls and dot indicators.
+- 📊 **GitLab Activity Calendar**: High-contrast, interactive 6-month contribution grid with exact tooltip ranges and month separation gaps.
+- 📜 **Achievements Lightbox Viewer**: Interactive modal pop-up viewer for awards and certificates in high resolution.
+- ⚡ **SEO & Performance Optimized**: Full metadata, OpenGraph, Twitter Cards, canonical URL, JSON-LD Schema.org structured data, sitemap.xml, and robots.txt.
+- 📱 **100% Fully Responsive**: Pixel-perfect layout optimization across Mobile, Tablet, Laptop, and Desktop screens.
+- 📧 **Direct Contact Integration**: Interactive contact form submitting messages directly to `me.davidrahmadana@gmail.com`.
+- 🌓 **Light & Dark Theme Switching**: Smooth theme toggling with zero layout shifts.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Component Library**: [shadcn/ui](https://ui.shadcn.com/) (Base UI)
-- **Animation**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Linting & Formatting**: [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)
+- **Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Simple Icons](https://simpleicons.org/) (`react-icons/si`), [VS Code Icons](https://github.com/microsoft/vscode-icons) (`react-icons/vsc`), & [Lucide React](https://lucide.dev/)
+- **Deployment**: [Vercel](https://vercel.com/)
 
 ---
 
-## 📁 Struktur Folder
-
-Proyek ini menggunakan struktur folder modular yang bersih untuk pengembangan jangka panjang:
+## 📁 Project Structure
 
 ```text
 davidrahmadana.dev/
-├── app/                  # Route handlers, layouts, pages, & global styles
-│   ├── globals.css       # File stylesheet global utama
-│   ├── layout.tsx        # Layout utama aplikasi
-│   └── page.tsx          # Halaman depan (home) default
-├── components/           # Komponen UI global reusable
-│   └── ui/               # Komponen shadcn/ui (e.g. Button)
-├── hooks/                # Custom React hooks
-├── lib/                  # Fungsi utilitas global dan integrasi API
-├── types/                # Definisi type & interface TypeScript
-├── constants/            # Nilai konstanta dan konfigurasi global
-├── data/                 # Data statis (e.g. project list, experience info)
-├── styles/               # Aset style/tema tambahan jika dibutuhkan
-├── docs/                 # Dokumentasi internal proyek
-├── public/               # File aset statis (images, icons, dll.)
-├── .prettierrc           # Konfigurasi Prettier
-├── tsconfig.json         # Konfigurasi TypeScript
-├── next.config.ts        # Konfigurasi Next.js
-└── eslint.config.mjs     # Konfigurasi ESLint (Flat Config)
+├── app/                  # Route handlers, layouts, sitemap, robots, & styles
+│   ├── globals.css       # Main Tailwind v4 global stylesheet
+│   ├── layout.tsx        # Root layout with SEO & Schema.org JSON-LD
+│   ├── page.tsx          # Main showcase page
+│   ├── sitemap.ts        # Next.js Metadata Route Sitemap generator
+│   └── robots.ts         # Next.js Metadata Route Robots generator
+├── components/           # UI & Section components
+│   ├── sections/         # Hero, About, Experience, Skills, Projects, Achievements, Contact
+│   ├── ui/               # Reusable atomic UI components (Button, Card, Badge, etc.)
+│   ├── footer.tsx        # Responsive Footer component
+│   └── navbar.tsx        # Glassmorphism Navbar component
+├── data/                 # Static data sources (skills, experience, projects, contact, etc.)
+├── public/               # Static assets & screenshot image subfolders
+│   ├── achievements/     # Certificate image files
+│   └── projects/         # Project screenshot subfolders (cubiconia, adventure, etc.)
+├── tsconfig.json         # TypeScript configuration
+└── next.config.ts        # Next.js configuration
 ```
 
 ---
 
-## 🚀 Perintah Pengembangan
+## 🚀 Development Commands
 
-Gunakan perintah-perintah berikut untuk berinteraksi dengan proyek:
-
-| Perintah               | Deskripsi                                                    |
+| Command                | Description                                                  |
 | :--------------------- | :----------------------------------------------------------- |
-| `npm run dev`          | Menjalankan local development server dengan Turbopack        |
-| `npm run build`        | Melakukan build produksi yang dioptimalkan                   |
-| `npm run start`        | Menjalankan server hasil build produksi secara lokal         |
-| `npm run lint`         | Melakukan pengecekan error kode menggunakan ESLint           |
-| `npm run format`       | Merapikan format file kode menggunakan Prettier              |
-| `npm run format:check` | Memeriksa apakah file kode sudah rapi sesuai aturan Prettier |
+| `npm run dev`          | Launch local development server with Turbopack               |
+| `npm run build`        | Execute production build compilation                          |
+| `npm run start`        | Run production build server locally                          |
+| `npm run lint`         | Check codebase for ESLint errors                             |
+| `npm run format`       | Format code with Prettier                                    |
 
 ---
 
-## 📦 Langkah Instalasi Awal
+## ⚙️ Deployment to Vercel
 
-Ikuti langkah berikut untuk memulai development secara lokal:
-
-1. **Clone repositori**:
-
+1. Push your changes to GitHub:
    ```bash
-   git clone <repository-url>
-   cd davidrahmadana.dev
+   git add .
+   git commit -m "feat: production release"
+   git push origin main
    ```
+2. Import the repository in [Vercel Dashboard](https://vercel.com).
+3. Click **Deploy**. Vercel will automatically build and deploy the Next.js application.
 
-2. **Instal dependensi**:
+---
 
-   ```bash
-   npm install
-   ```
+## 📄 License
 
-3. **Jalankan server lokal**:
-   ```bash
-   npm run dev
-   ```
-   Aplikasi akan berjalan pada alamat: [http://localhost:3000](http://localhost:3000)
+Copyright © {new Date().getFullYear()} David Gholi Rahmadana. All rights reserved.
