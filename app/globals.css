@@ -7,9 +7,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+
+  /* FIX: Arahkan langsung ke CSS Variable yang di-inject sama Next.js font di layout.tsx */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
   /* Brand Accents */
   --color-brand-primary: var(--brand-primary);
@@ -103,6 +105,18 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* GitLab Contribution Grid Levels (Light Mode - High Contrast) */
+  --level-0: #e2e8f0;
+  --level-border-0: #cbd5e1;
+  --level-1: #93c5fd;
+  --level-border-1: #60a5fa;
+  --level-2: #3b82f6;
+  --level-border-2: #2563eb;
+  --level-3: #1d4ed8;
+  --level-border-3: #1e40af;
+  --level-4: #1e3a8a;
+  --level-border-4: #172554;
 }
 
 .dark {
@@ -143,6 +157,18 @@
   --sidebar-accent-foreground: oklch(0.97 0.005 240);
   --sidebar-border: oklch(0.22 0.015 240);
   --sidebar-ring: oklch(0.45 0.03 240);
+
+  /* GitLab Contribution Grid Levels (Dark Mode - High Contrast & Glow) */
+  --level-0: #1e293b;
+  --level-border-0: #334155;
+  --level-1: #2563eb;
+  --level-border-1: #3b82f6;
+  --level-2: #38bdf8;
+  --level-border-2: #60a5fa;
+  --level-3: #60a5fa;
+  --level-border-3: #93c5fd;
+  --level-4: #93c5fd;
+  --level-border-4: #bfdbfe;
 }
 
 @layer base {

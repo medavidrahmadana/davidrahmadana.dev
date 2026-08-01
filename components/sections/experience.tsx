@@ -1,8 +1,25 @@
 "use client";
 
 import * as React from "react";
-import { motion, Variants } from "framer-motion";
-import { Briefcase, Calendar, Check, ShieldAlert, Award } from "lucide-react";
+import { motion, Variants, useScroll, useSpring } from "framer-motion";
+import { Briefcase, Calendar, Check, ShieldAlert, Award, Network, Sparkles } from "lucide-react";
+import {
+  SiLaravel,
+  SiCodeigniter,
+  SiVuedotjs,
+  SiNuxt,
+  SiNextdotjs,
+  SiVite,
+  SiReact,
+  SiFlutter,
+  SiMysql,
+  SiGit,
+  SiGithub,
+  SiGitlab,
+  SiPostman,
+} from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
+
 import { experiencesData } from "@/data/experience";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,7 +27,62 @@ import { IconWrapper } from "@/components/ui/icon-wrapper";
 import { SectionContainer } from "@/components/ui/section-container";
 import { SectionHeader } from "@/components/ui/section-header";
 
+function ExperienceTechIcon({ name }: { name: string }) {
+  const iconClass = "h-3.5 w-3.5 shrink-0";
+
+  switch (name) {
+    case "Laravel":
+      return <SiLaravel className={iconClass} style={{ color: "#FF2D20" }} />;
+    case "CodeIgniter 3":
+    case "CodeIgniter":
+      return <SiCodeigniter className={iconClass} style={{ color: "#EF4223" }} />;
+    case "Vue.js":
+      return <SiVuedotjs className={iconClass} style={{ color: "#4FC08D" }} />;
+    case "Nuxt.js":
+      return <SiNuxt className={iconClass} style={{ color: "#00DC82" }} />;
+    case "Next.js":
+      return <SiNextdotjs className={`${iconClass} fill-current text-foreground`} />;
+    case "Vite":
+      return <SiVite className={iconClass} style={{ color: "#646CFF" }} />;
+    case "React.js":
+    case "React":
+      return <SiReact className={iconClass} style={{ color: "#61DAFB" }} />;
+    case "Flutter":
+      return <SiFlutter className={iconClass} style={{ color: "#02569B" }} />;
+    case "MySQL":
+      return <SiMysql className={iconClass} style={{ color: "#4479A1" }} />;
+    case "Git":
+      return <SiGit className={iconClass} style={{ color: "#F05032" }} />;
+    case "GitHub":
+      return <SiGithub className={`${iconClass} fill-current text-foreground`} />;
+    case "GitLab":
+      return <SiGitlab className={iconClass} style={{ color: "#FC6D26" }} />;
+    case "Postman":
+      return <SiPostman className={iconClass} style={{ color: "#FF6C37" }} />;
+    case "VS Code":
+      return <VscVscode className={iconClass} style={{ color: "#007ACC" }} />;
+    case "RESTful API":
+      return <Network className={iconClass} style={{ color: "#3B82F6" }} />;
+    case "AI Agents":
+      return <Sparkles className={iconClass} style={{ color: "#EC4899" }} />;
+    default:
+      return null;
+  }
+}
+
 export function Experience() {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"]
+  });
+  
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   const containerVariants: Variants = {
     hidden: {},
     visible: {
@@ -44,9 +116,15 @@ export function Experience() {
         subtitle="A timeline of my professional career, freelance projects, and business impact."
       />
 
-      <div className="relative mx-auto mt-12 max-w-4xl px-1 py-1">
-        {/* Vertical Timeline Guide Line */}
-        <div className="bg-border/60 pointer-events-none absolute top-2 bottom-2 left-4 w-[2px] md:left-8" />
+      <div ref={containerRef} className="relative mx-auto mt-12 max-w-4xl px-1 py-1">
+        {/* Vertical Timeline Guide Line Base */}
+        <div className="bg-border/60 absolute top-2 bottom-2 left-4 w-[2px] md:left-8" />
+        
+        {/* Vertical Timeline Guide Line Animated Progress */}
+        <motion.div 
+          className="bg-brand-primary absolute top-2 bottom-2 left-4 w-[2px] origin-top md:left-8"
+          style={{ scaleY }}
+        />
 
         <motion.div
           variants={containerVariants}
@@ -70,7 +148,7 @@ export function Experience() {
               </div>
 
               {/* Experience Card */}
-              <Card className="border-border/60 bg-card/45 hover:border-brand-primary/20 hover:shadow-brand-primary/5 backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
+              <Card className="border-border/60 bg-card/45 hover:border-brand-primary/20 hover:shadow-brand-primary/5 hover:scale-[1.01] backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
                 <CardContent className="p-6">
                   {/* Card Header Info */}
                   <div className="border-border/40 mb-4 flex flex-col justify-between gap-4 border-b pb-4 md:flex-row md:items-start">
@@ -81,12 +159,12 @@ export function Experience() {
                         </h3>
                         <div className="flex gap-2">
                           {exp.isCurrent && (
-                            <Badge className="bg-brand-primary/10 text-brand-primary rounded-full border-none px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase">
+                            <Badge variant="success" className="rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase">
                               Current
                             </Badge>
                           )}
                           {exp.isPrivate && (
-                            <Badge className="flex items-center gap-1 rounded-full border-none bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold tracking-wider text-amber-500 uppercase">
+                            <Badge variant="warning" className="flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase">
                               <IconWrapper icon={ShieldAlert} size="xs" />
                               Private
                             </Badge>
@@ -148,15 +226,16 @@ export function Experience() {
                     </div>
                   )}
 
-                  {/* Tech Stack Used */}
-                  <div className="border-border/40 flex flex-wrap gap-2 border-t pt-2">
+                  {/* Tech Stack Used with Official Brand Icons */}
+                  <div className="border-border/40 flex flex-wrap gap-2 border-t pt-4">
                     {exp.technologies.map((tech) => (
                       <Badge
                         key={tech}
                         variant="secondary"
-                        className="bg-muted hover:bg-muted/80 text-muted-foreground rounded-full px-2.5 py-0.5 text-[10px] font-semibold tracking-wide"
+                        className="bg-card/80 hover:bg-card border border-border/50 text-foreground rounded-lg px-2.5 py-1 text-xs font-bold flex items-center gap-1.5 transition-all duration-200 hover:scale-105"
                       >
-                        {tech}
+                        <ExperienceTechIcon name={tech} />
+                        <span>{tech}</span>
                       </Badge>
                     ))}
                   </div>

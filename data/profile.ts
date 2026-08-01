@@ -1,6 +1,7 @@
 export interface ProfileStat {
   value: string;
   label: string;
+  sublabel?: string;
 }
 
 export interface SocialLink {
@@ -28,10 +29,10 @@ export const profileData: ProfileData = {
   focus:
     "Building business solutions, scalable systems, and contributing to 16+ client projects at PT Cubiconia Kanaya Pratama.",
   stats: [
-    { value: "3+", label: "Years Experience" },
-    { value: "16+", label: "Projects Completed" },
-    { value: "15+", label: "Technologies" },
-    { value: "🏆", label: "Employee of the Month" },
+    { value: "3+", label: "Years Experience", sublabel: "Freelance & Professional" },
+    { value: "16+", label: "Client Projects", sublabel: "At PT Cubiconia" },
+    { value: "15+", label: "Technologies", sublabel: "Web & Mobile Stack" },
+    { value: "1x", label: "Employee of the Month", sublabel: "At PT Cubiconia" },
   ],
   socials: [
     { platform: "github", href: "https://github.com/medavidrahmadana" },

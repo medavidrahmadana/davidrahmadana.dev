@@ -25,7 +25,7 @@ export const aboutData: AboutData = {
     "Experienced in RESTful API development, database design, system integration, and business application development. Currently contributing to 16+ client projects at PT Cubiconia Kanaya Pratama and recognized as Employee of the Month within three months of joining.",
   education: {
     institution: "Telkom University",
-    degree: "Bachelor of Software Engineering (S.Kom.)",
+    degree: "Bachelor of Software Engineering (S.Si.Kom)",
     period: "2021 - 2025",
     gpa: "GPA: 3.48 / 4.00",
     location: "Bandung, Indonesia",
@@ -34,12 +34,12 @@ export const aboutData: AboutData = {
     {
       title: "Backend Development",
       description:
-        "Laravel (PHP), CodeIgniter 3, MySQL, Node.js (Basic), Python",
+        "Laravel, CodeIgniter 3, MySQL, Node.js, Python",
     },
     {
       title: "Frontend Development",
       description:
-        "Vue.js, Nuxt.js, React.js (Basic), JavaScript, HTML, CSS, Tailwind CSS",
+        "Vue.js, Nuxt.js, React.js, JavaScript, HTML, CSS, Tailwind CSS",
     },
     {
       title: "Mobile Development",

@@ -9,13 +9,15 @@ import {
   Download,
   Award,
 } from "lucide-react";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, useMotionValue, useTransform, animate, useInView } from "framer-motion";
 import { profileData } from "@/data/profile";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { IconWrapper } from "@/components/ui/icon-wrapper";
 import { SectionContainer } from "@/components/ui/section-container";
+import { Counter } from "@/components/ui/counter";
 import Image from "next/image";
+import { Magnetic } from "@/components/ui/magnetic";
 
 const socialIcons = {
   github: Github,
@@ -92,32 +94,42 @@ export function Hero() {
             variants={itemVariants}
             className="flex flex-wrap gap-4 pt-2"
           >
-            <a
-              href="#projects"
-              className={buttonVariants({
-                variant: "brand",
-                size: "lg",
-                className: "rounded-full px-6",
-              })}
-            >
-              View Projects
-              <IconWrapper
-                icon={ArrowRight}
-                size="sm"
-                className="ml-2 transition-transform group-hover/button:translate-x-1"
-              />
-            </a>
-            <a
-              href={profileData.cvUrl}
-              className={buttonVariants({
-                variant: "outline",
-                size: "lg",
-                className: "rounded-full px-6",
-              })}
-            >
-              Download CV
-              <IconWrapper icon={Download} size="sm" className="ml-2" />
-            </a>
+            <Magnetic range={50}>
+              <motion.a
+                href="#projects"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className={buttonVariants({
+                  variant: "brand",
+                  size: "lg",
+                  className: "rounded-full px-6 shadow-md shadow-brand-primary/10",
+                })}
+              >
+                View Projects
+                <IconWrapper
+                  icon={ArrowRight}
+                  size="sm"
+                  className="ml-2 transition-transform group-hover/button:translate-x-1"
+                />
+              </motion.a>
+            </Magnetic>
+            <Magnetic range={50}>
+              <motion.a
+                href={profileData.cvUrl}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className={buttonVariants({
+                  variant: "outline",
+                  size: "lg",
+                  className: "rounded-full px-6",
+                })}
+              >
+                Download CV
+                <IconWrapper icon={Download} size="sm" className="ml-2" />
+              </motion.a>
+            </Magnetic>
           </motion.div>
 
           {/* Social Links */}
@@ -128,16 +140,19 @@ export function Hero() {
             {profileData.socials.map((social) => {
               const Icon = socialIcons[social.platform];
               return (
-                <a
-                  key={social.platform}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-border bg-card/65 text-muted-foreground hover:text-brand-primary hover:border-brand-primary/30 focus:ring-brand-primary/50 flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 focus:ring-2 focus:outline-none"
-                  aria-label={`Visit my ${social.platform}`}
-                >
-                  <IconWrapper icon={Icon} size="sm" />
-                </a>
+                <Magnetic key={social.platform} range={40} action={0.4}>
+                  <motion.a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="border-border bg-card/65 text-muted-foreground hover:text-brand-primary hover:border-brand-primary/30 focus:ring-brand-primary/50 flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 focus:ring-2 focus:outline-none shadow-sm"
+                    aria-label={`Visit my ${social.platform}`}
+                  >
+                    <IconWrapper icon={Icon} size="sm" />
+                  </motion.a>
+                </Magnetic>
               );
             })}
           </motion.div>
@@ -150,12 +165,20 @@ export function Hero() {
         >
           <div className="relative flex h-72 w-72 items-center justify-center sm:h-80 sm:w-80 md:h-96 md:w-96">
             {/* Outer Animated Ring */}
-            <div className="border-brand-primary/40 dark:border-brand-primary/60 absolute inset-0 animate-[spin_60s_linear_infinite] rounded-full border-2 border-dashed" />
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              className="border-brand-primary/40 dark:border-brand-primary/60 absolute inset-0 rounded-full border-2 border-dashed" 
+            />
             {/* Inner Ring Glow */}
             <div className="from-brand-primary/15 to-brand-secondary/10 dark:from-brand-primary/25 absolute inset-4 rounded-full bg-gradient-to-tr via-transparent blur-sm" />
 
             {/* Main Profile Photo Container */}
-            <div className="border-border bg-card/50 absolute inset-6 flex flex-col items-center justify-center overflow-hidden rounded-full border backdrop-blur-md">
+            <motion.div 
+              whileHover={{ scale: 1.03, rotate: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              className="border-border bg-card/50 shadow-brand-primary/5 absolute inset-6 flex flex-col items-center justify-center overflow-hidden rounded-full border shadow-xl backdrop-blur-md"
+            >
               {profileData.photoUrl ? (
                 <Image
                   src={profileData.photoUrl}
@@ -180,34 +203,47 @@ export function Hero() {
                   </span>
                 </div>
               )}
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </motion.div>
 
-      {/* Grid of Statistics */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
+        animate="visible"
         className="mt-16 grid grid-cols-2 gap-4 px-2 py-2 md:grid-cols-4"
       >
         {profileData.stats.map((stat, index) => (
           <motion.div key={index} variants={itemVariants}>
-            <Card className="border-border/60 bg-card/40 hover:border-brand-primary/20 backdrop-blur-sm transition-all duration-300">
-              <CardContent className="flex flex-col items-center justify-center p-6 text-center">
+            <Card className="border-border/60 bg-card/40 hover:border-brand-primary/20 hover:shadow-brand-primary/5 hover:scale-[1.02] backdrop-blur-sm transition-all duration-300 h-full">
+              <CardContent className="flex flex-col items-center justify-center p-5 sm:p-6 text-center h-full">
                 <span className="text-brand-primary mb-1 text-3xl font-extrabold tracking-tight sm:text-4xl">
-                  {stat.value}
+                  <Counter value={stat.value} />
                 </span>
-                <span className="text-muted-foreground text-xs font-medium tracking-wide uppercase sm:text-sm">
+                <span className="text-foreground text-xs font-bold tracking-wide uppercase sm:text-xs">
                   {stat.label}
                 </span>
+                {stat.sublabel && (
+                  <span className="text-muted-foreground/75 mt-1 text-[10px] sm:text-xs font-normal">
+                    {stat.sublabel}
+                  </span>
+                )}
               </CardContent>
             </Card>
           </motion.div>
         ))}
       </motion.div>
+
+      {/* Sub-note line explaining scope */}
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="mt-3 text-center text-[10px] sm:text-xs text-muted-foreground/60 italic font-light"
+      >
+        * Based on professional, freelance, and academic experience & achievements
+      </motion.p>
     </SectionContainer>
   );
 }
