@@ -202,7 +202,7 @@ export function Skills() {
 
           return (
             <motion.div key={category} variants={cardVariants} className={colSpanClass}>
-              <Card className="border-border/60 bg-card/45 hover:border-brand-primary/25 hover:shadow-brand-primary/5 h-full backdrop-blur-sm transition-all duration-300 hover:shadow-lg flex flex-col justify-between overflow-hidden">
+              <Card className="lautan-card-accent border-border/60 bg-card/45 hover:border-brand-primary/25 hover:shadow-brand-primary/10 h-full backdrop-blur-sm transition-all duration-300 hover:shadow-lg flex flex-col justify-between overflow-hidden">
                 <CardContent className="space-y-4 p-6 flex flex-col h-full justify-between">
                   <div>
                     {/* Category Header */}

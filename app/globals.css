@@ -8,7 +8,6 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* FIX: Arahkan langsung ke CSS Variable yang di-inject sama Next.js font di layout.tsx */
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
@@ -135,8 +134,8 @@
   --accent: oklch(0.2 0.015 240);
   --accent-foreground: oklch(0.97 0.005 240);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(0.22 0.015 240);
-  --input: oklch(0.22 0.015 240);
+  --border: rgba(255, 255, 255, 0.22);
+  --input: rgba(255, 255, 255, 0.22);
   --ring: oklch(0.45 0.03 240);
 
   /* Brand Specific CSS variables (Dark Mode) */
@@ -181,4 +180,50 @@
   html {
     @apply scroll-smooth font-sans;
   }
+}
+
+/* Custom Floating Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+.animate-float-slow {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 4s ease-in-out 2s infinite;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s infinite;
+}
+
+/* Hover Card Top Pure Blue Accent Line */
+.lautan-card-accent {
+  position: relative;
+  overflow: hidden;
+}
+
+.lautan-card-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0084DF, #00C2FF, #38BDF8);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.lautan-card-accent:hover::before {
+  opacity: 1;
 }

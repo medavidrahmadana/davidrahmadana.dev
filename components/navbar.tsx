@@ -72,10 +72,19 @@ export function Navbar() {
         {/* Logo / Brand Name */}
         <a
           href="#home"
-          className="text-foreground text-lg font-bold tracking-tight transition-opacity hover:opacity-85"
+          className="flex items-center gap-2 transition-opacity hover:opacity-85"
           aria-label="David Rahmadana Home"
         >
-          DR<span className="text-brand-primary">.</span>
+          <img
+            src="/Logo DGR Hitam Transparan.png"
+            alt="DGR Logo"
+            className="h-11 sm:h-[46px] w-auto object-contain hidden dark:block transition-all duration-300"
+          />
+          <img
+            src="/Logo DGR Putih Transparan.png"
+            alt="DGR Logo"
+            className="h-11 sm:h-[46px] w-auto object-contain block dark:hidden transition-all duration-300"
+          />
         </a>
 
         {/* Desktop Menu */}

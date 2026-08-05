@@ -143,7 +143,7 @@ export function Projects() {
               className="relative w-full"
             >
               {/* Project Card */}
-              <Card className="border-border/60 bg-card/45 hover:border-brand-primary/20 hover:shadow-brand-primary/5 hover:scale-[1.005] flex h-full flex-col justify-between overflow-hidden backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
+              <Card className="lautan-card-accent border-border/60 bg-card/45 hover:border-brand-primary/20 hover:shadow-brand-primary/10 hover:scale-[1.005] flex h-full flex-col justify-between overflow-hidden backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
                 {project.isPrivate ? (
                   <div className="grid grid-cols-1 xl:grid-cols-12 h-full">
                     {/* Left details & tech badges */}

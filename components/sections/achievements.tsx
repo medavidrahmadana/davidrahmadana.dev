@@ -46,7 +46,7 @@ export function Achievements() {
       >
         {achievementsData.map((item, idx) => (
           <motion.div key={idx} variants={cardVariants}>
-            <Card className="border-border/60 bg-card/45 hover:border-brand-primary/20 hover:shadow-brand-primary/5 hover:scale-[1.01] h-full backdrop-blur-sm transition-all duration-300 hover:shadow-lg overflow-hidden flex flex-col justify-between group">
+            <Card className="lautan-card-accent border-border/60 bg-card/45 hover:border-brand-primary/20 hover:shadow-brand-primary/10 hover:scale-[1.01] h-full backdrop-blur-sm transition-all duration-300 hover:shadow-lg overflow-hidden flex flex-col justify-between group">
               <div>
                 {/* Certificate Image Thumbnail with Hover Zoom */}
                 {item.image && (

@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { ArrowUp, Github, Linkedin, Mail, Heart } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
 
 export function Footer() {
   const scrollToTop = () => {
@@ -15,9 +15,21 @@ export function Footer() {
   return (
     <footer className="border-border/60 bg-card/60 w-full border-t backdrop-blur-md">
       <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-6 px-4 py-8 sm:flex-row sm:px-8 lg:px-12">
-        {/* Left: Brand & Copyright */}
-        <div className="flex flex-col items-center gap-1.5 text-center sm:items-start sm:text-left">
-          <div className="flex items-center gap-2">
+        {/* Left: Brand DGR Landscape in Light Mode & Clean Text in Dark Mode */}
+        <div className="flex flex-col items-center gap-2 text-center sm:items-start sm:text-left">
+          {/* Light Mode: DGR Landscape Image with mix-blend-multiply */}
+          <div className="block dark:hidden">
+            <Image
+              src="/DGR Landscape Transparan.png"
+              alt="DGR - David Gholi Rahmadana"
+              width={260}
+              height={70}
+              className="h-12 sm:h-14 w-auto object-contain transition-all duration-300"
+            />
+          </div>
+
+          {/* Dark Mode: Clean Text "David Gholi Rahmadana • Software Engineer" */}
+          <div className="hidden dark:flex items-center gap-2">
             <span className="text-foreground font-bold tracking-tight text-sm">
               David Gholi Rahmadana
             </span>
@@ -26,8 +38,9 @@ export function Footer() {
               Software Engineer
             </span>
           </div>
+
           <p className="text-muted-foreground text-xs font-light">
-            © {new Date().getFullYear()} David Rahmadana. All rights reserved.
+            © {new Date().getFullYear()} David Gholi Rahmadana. All rights reserved.
           </p>
         </div>
 

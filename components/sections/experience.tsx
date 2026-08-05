@@ -148,7 +148,7 @@ export function Experience() {
               </div>
 
               {/* Experience Card */}
-              <Card className="border-border/60 bg-card/45 hover:border-brand-primary/20 hover:shadow-brand-primary/5 hover:scale-[1.01] backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
+              <Card className="lautan-card-accent border-border/60 bg-card/45 hover:border-brand-primary/20 hover:shadow-brand-primary/10 hover:scale-[1.01] backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
                 <CardContent className="p-6">
                   {/* Card Header Info */}
                   <div className="border-border/40 mb-4 flex flex-col justify-between gap-4 border-b pb-4 md:flex-row md:items-start">

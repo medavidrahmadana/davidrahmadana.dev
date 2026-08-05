@@ -95,7 +95,7 @@ export function About() {
 
           {/* Main Bio Card */}
           <motion.div variants={itemVariants}>
-            <Card className="border-border/60 bg-card/45 backdrop-blur-sm p-6 space-y-4 hover:border-brand-primary/20 transition-all duration-300">
+            <Card className="lautan-card-accent border-border/60 bg-card/45 backdrop-blur-sm p-6 space-y-4 hover:border-brand-primary/20 transition-all duration-300">
               <p className="text-foreground text-base sm:text-lg leading-relaxed font-semibold">
                 {aboutData.summary}
               </p>
@@ -186,7 +186,7 @@ export function About() {
           <div className="grid grid-cols-1 gap-3.5">
             {expertiseData.map((item, index) => (
               <motion.div key={index} variants={itemVariants}>
-                <Card className="border-border/60 bg-card/45 hover:border-brand-primary/25 hover:scale-[1.01] backdrop-blur-sm transition-all duration-300 hover:shadow-md overflow-hidden">
+                <Card className="lautan-card-accent border-border/60 bg-card/45 hover:border-brand-primary/25 hover:scale-[1.01] backdrop-blur-sm transition-all duration-300 hover:shadow-md overflow-hidden">
                   <CardContent className="p-4 sm:p-5 flex flex-col gap-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">

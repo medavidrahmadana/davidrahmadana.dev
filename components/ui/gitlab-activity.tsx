@@ -48,7 +48,7 @@ export function GitLabActivity() {
 
     // Aug (Columns 25 - 29) - Starts Sat Aug 1 (Row 5) - All 0 Activity
     [-1, -1, -1, -1, -1, 0, 0],  // Column 25 (Rows 0-4 invisible)
-    [0, 0, 0, 0, 0, 0, 0],       // Column 26
+    [2, 1, 1, 0, 0, 0, 0],       // Column 26
     [0, 0, 0, 0, 0, 0, 0],       // Column 27
     [0, 0, 0, 0, 0, 0, 0],       // Column 28
     [0, 0, 0, 0, 0, 0, 0],       // Column 29

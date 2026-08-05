@@ -58,7 +58,7 @@ export function CanvasParticles() {
           y: Math.random() * height,
           vx: (Math.random() - 0.5) * 0.4,
           vy: (Math.random() - 0.5) * 0.4,
-          radius: Math.random() * 1.5 + 0.8,
+          radius: Math.random() * 1.8 + 1.2,
         });
       }
     };
@@ -76,9 +76,9 @@ export function CanvasParticles() {
       ctx.clearRect(0, 0, width, height);
 
       const dark = isDarkMode();
-      // Highly transparent particle and line colors
-      const particleColor = dark ? "rgba(99, 102, 241, 0.18)" : "rgba(79, 70, 229, 0.12)";
-      const lineColor = dark ? "rgba(99, 102, 241, 0.05)" : "rgba(79, 70, 229, 0.04)";
+      // High clarity particle and line colors: Deep Navy in Light Mode, Crisp White in Dark Mode
+      const particleColor = dark ? "rgba(255, 255, 255, 0.45)" : "rgba(10, 17, 56, 0.35)";
+      const lineColor = dark ? "rgba(255, 255, 255, 0.12)" : "rgba(10, 17, 56, 0.12)";
 
       // Draw and update particles
       particles.forEach((p) => {
