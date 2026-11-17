@@ -130,12 +130,12 @@ export function Experience() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "0px" }}
           className="space-y-12"
         >
-          {experiencesData.map((exp, index) => (
+          {experiencesData.map((exp) => (
             <motion.div
-              key={index}
+              key={`${exp.company}-${exp.period}`}
               variants={itemVariants}
               className="group relative pl-10 md:pl-20"
             >

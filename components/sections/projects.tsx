@@ -149,16 +149,22 @@ export function Projects() {
                     {/* Left details & tech badges */}
                     <div className="xl:col-span-7 flex flex-col justify-between p-6 h-full space-y-6">
                       <div className="space-y-4">
-                        {/* Header, private badge */}
+                        {/* Header, company name & badges */}
                         <div className="flex flex-wrap items-center gap-2">
+                          {project.company && (
+                            <span className="text-xxs text-muted-foreground/80 font-bold tracking-wider uppercase">
+                              {project.company}
+                            </span>
+                          )}
                           <Badge variant="warning" className="flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase">
                             <IconWrapper icon={ShieldAlert} size="xs" />
                             Private Project
                           </Badge>
-                          {project.company && (
-                            <span className="text-xxs text-muted-foreground/60 font-semibold tracking-wider uppercase">
-                              {project.company}
-                            </span>
+                          {project.status && (
+                            <Badge variant="success" className="flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase">
+                              <IconWrapper icon={Check} size="xs" />
+                              {project.status}
+                            </Badge>
                           )}
                         </div>
 
@@ -435,43 +441,82 @@ export function Projects() {
                     <div className="xl:col-span-5 p-0 flex flex-col justify-center bg-neutral-950/5 xl:border-l border-t xl:border-t-0 border-border/20 overflow-hidden relative min-h-[340px] sm:min-h-[375px] w-full">
                       {project.technologies.includes("Flutter") || project.title.toLowerCase().includes("mobile") || project.title.toLowerCase().includes("adventure") ? (
                         /* Horizontal Dynamic Mobile Carousel with Active Focus & Scale Transition */
-                        <div className="w-full h-full bg-neutral-950/95 relative overflow-hidden flex items-center justify-center p-3 select-none group/mobile">
+                        <div className="w-full h-full bg-neutral-950/95 relative overflow-hidden flex items-center justify-center p-4 sm:p-6 select-none group/mobile">
                           {(() => {
                             const images = project.galleryImages && project.galleryImages.length > 0
                               ? project.galleryImages
                               : [project.coverImage || ""];
                             const activeIdx = activeSlides[project.title] || 0;
 
+                            // Linear Carousel (no cyclic wrap on edges):
+                            // - At first item (activeIdx = 0): left slot is invisible/empty
+                            // - At last item (activeIdx = total - 1): right slot is invisible/empty
+                            const total = images.length;
+                            const hasPrev = activeIdx > 0;
+                            const hasNext = activeIdx < total - 1;
+                            const prevIdx = activeIdx - 1;
+                            const nextIdx = activeIdx + 1;
+
                             return (
                               <>
-                                <div className="w-full flex gap-2 sm:gap-2.5 justify-center items-center py-2 shrink-0 overflow-x-auto">
-                                  {images.map((imgSrc, idx) => {
-                                    const isActive = activeIdx === idx;
-
-                                    return (
-                                      <div
-                                        key={idx}
-                                        onClick={() => setActiveSlides(prev => ({ ...prev, [project.title]: idx }))}
-                                        className={`relative bg-neutral-900 overflow-hidden shrink-0 cursor-pointer transition-all duration-500 ease-out ${
-                                          isActive
-                                            ? "w-[125px] h-[270px] sm:w-[142px] sm:h-[305px] rounded-[24px] z-20 scale-105 border-[3.5px] border-neutral-100 shadow-[0_0_28px_rgba(255,255,255,0.4)] opacity-100"
-                                            : "w-[98px] h-[210px] sm:w-[110px] sm:h-[236px] rounded-[18px] z-10 opacity-55 scale-95 border-[2.5px] border-neutral-800/80 hover:opacity-85 hover:scale-100"
-                                        }`}
-                                      >
-                                        {/* Dynamic Island / Pill Camera Notch */}
-                                        <div className={`absolute top-2 left-1/2 -translate-x-1/2 bg-black rounded-full z-15 transition-all ${
-                                          isActive ? "w-8 h-2.5 border border-neutral-800" : "w-6 h-1.5"
-                                        }`} />
+                                <div className="w-full flex gap-3 sm:gap-4 justify-center items-center py-2 shrink-0">
+                                  {/* Left Preview Slot */}
+                                  <div
+                                    onClick={() => hasPrev && setActiveSlides(prev => ({ ...prev, [project.title]: prevIdx }))}
+                                    className={`relative bg-neutral-900 overflow-hidden shrink-0 transition-all duration-500 ease-out w-[85px] h-[180px] sm:w-[95px] sm:h-[200px] rounded-[16px] z-10 border-[2px] border-neutral-800/80 ${
+                                      hasPrev
+                                        ? "opacity-45 scale-90 cursor-pointer hover:opacity-75 hover:scale-95"
+                                        : "opacity-0 pointer-events-none scale-75"
+                                    }`}
+                                  >
+                                    {hasPrev && (
+                                      <>
+                                        <div className="absolute top-1.5 left-1/2 -translate-x-1/2 bg-black rounded-full z-15 w-5 h-1" />
                                         <Image
-                                          src={imgSrc}
-                                          alt={`Mobile screen ${idx + 1}`}
+                                          src={images[prevIdx]}
+                                          alt={`Mobile screen ${prevIdx + 1}`}
                                           fill
-                                          priority={idx === 0}
                                           className="object-cover object-top"
                                         />
-                                      </div>
-                                    );
-                                  })}
+                                      </>
+                                    )}
+                                  </div>
+
+                                  {/* Center Active Main Phone */}
+                                  <div
+                                    className="relative bg-neutral-900 overflow-hidden shrink-0 transition-all duration-500 ease-out w-[120px] h-[255px] sm:w-[135px] sm:h-[285px] rounded-[22px] z-20 scale-100 border-[3px] border-neutral-100 shadow-[0_0_24px_rgba(255,255,255,0.35)] opacity-100"
+                                  >
+                                    <div className="absolute top-1.5 left-1/2 -translate-x-1/2 bg-black rounded-full z-15 w-7 h-2 border border-neutral-800" />
+                                    <Image
+                                      src={images[activeIdx]}
+                                      alt={`Mobile screen ${activeIdx + 1}`}
+                                      fill
+                                      priority
+                                      className="object-cover object-top"
+                                    />
+                                  </div>
+
+                                  {/* Right Preview Slot */}
+                                  <div
+                                    onClick={() => hasNext && setActiveSlides(prev => ({ ...prev, [project.title]: nextIdx }))}
+                                    className={`relative bg-neutral-900 overflow-hidden shrink-0 transition-all duration-500 ease-out w-[85px] h-[180px] sm:w-[95px] sm:h-[200px] rounded-[16px] z-10 border-[2px] border-neutral-800/80 ${
+                                      hasNext
+                                        ? "opacity-45 scale-90 cursor-pointer hover:opacity-75 hover:scale-95"
+                                        : "opacity-0 pointer-events-none scale-75"
+                                    }`}
+                                  >
+                                    {hasNext && (
+                                      <>
+                                        <div className="absolute top-1.5 left-1/2 -translate-x-1/2 bg-black rounded-full z-15 w-5 h-1" />
+                                        <Image
+                                          src={images[nextIdx]}
+                                          alt={`Mobile screen ${nextIdx + 1}`}
+                                          fill
+                                          className="object-cover object-top"
+                                        />
+                                      </>
+                                    )}
+                                  </div>
                                 </div>
 
                                 {/* Manual Clickable Navigation Buttons */}

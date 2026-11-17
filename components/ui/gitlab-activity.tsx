@@ -5,7 +5,7 @@ import { Info } from "lucide-react";
 
 export function GitLabActivity() {
   const daysPerWeek = 7;
-  
+
   // Handcrafted 2D matrix for March to August 2026 (30 columns x 7 days)
   // Value -1 = Invisible spacer cell (out of month range, rendered as opacity-0 to preserve grid structure)
   // Value 0 = Empty/holiday day (gray box)
@@ -46,12 +46,12 @@ export function GitLabActivity() {
     [1, 1, 1, 2, 2, 2, 0],       // Column 23
     [2, 2, 0, 2, 0, -1, -1],     // Column 24 (Jul 31 is Fri row 4, rows 5-6 invisible)
 
-    // Aug (Columns 25 - 29) - Starts Sat Aug 1 (Row 5) - All 0 Activity
-    [-1, -1, -1, -1, -1, 0, 0],  // Column 25 (Rows 0-4 invisible)
-    [2, 1, 1, 0, 0, 0, 0],       // Column 26
-    [0, 0, 0, 0, 0, 0, 0],       // Column 27
-    [0, 0, 0, 0, 0, 0, 0],       // Column 28
-    [0, 0, 0, 0, 0, 0, 0],       // Column 29
+    // Aug (Columns 25 - 29) - Starts Sat Aug 1 (Row 5) - Until Aug 31
+    [-1, -1, -1, -1, -1, 0, 0],  // Column 25 (Rows 0-4 invisible, Sat Aug 1)
+    [2, 1, 1, 2, 3, 1, 0],       // Column 26
+    [3, 2, 4, 3, 2, 2, 0],       // Column 27
+    [2, 3, 3, 2, 4, 1, 0],       // Column 28
+    [3, 2, 3, 2, 3, 1, 0],       // Column 29 (Mon Aug 31 is Row 0..Sun Aug 30 Row 6)
   ];
 
   const monthsData = [
@@ -77,14 +77,14 @@ export function GitLabActivity() {
         </div>
         <div className="flex items-center gap-1 text-[10px] text-muted-foreground font-medium">
           <Info className="h-3.5 w-3.5 text-brand-primary" />
-          <span>Member since March 02, 2026</span>
+          <span>Last activity August 31, 2026</span>
         </div>
       </div>
 
       {/* Grid Container with horizontal scroll protection */}
       <div className="select-none w-full overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-border/20">
         <div className="min-w-[490px] pr-1 grid grid-cols-[20px_1fr] gap-2">
-          
+
           {/* Day Labels aligned exactly with 7-row heights */}
           <div className="flex flex-col justify-between text-[8px] text-muted-foreground/60 font-bold text-right pr-1 h-[98px] mt-[16px] py-[1px] leading-none">
             <span className="h-[11px] flex items-center justify-end">M</span>
@@ -101,8 +101,8 @@ export function GitLabActivity() {
             {/* Month Labels Row */}
             <div className="flex gap-[3.5px] w-full">
               {monthsData.map((m, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className={`flex-1 text-center ${idx !== monthsData.length - 1 ? "mr-2.5" : ""}`}
                 >
                   <span className="text-[9px] text-muted-foreground/80 font-bold block text-center">
@@ -115,8 +115,8 @@ export function GitLabActivity() {
             {/* Continuous 30 Columns Stream Grid with Month Spacers */}
             <div className="flex gap-[3.5px] h-[98px]">
               {activityData.map((col, colIdx) => (
-                <div 
-                  key={colIdx} 
+                <div
+                  key={colIdx}
                   className={`flex flex-col gap-[3.5px] ${(colIdx + 1) % 5 === 0 && colIdx !== activityData.length - 1 ? "mr-2.5" : ""}`}
                 >
                   {col.map((level, dIndex) => {

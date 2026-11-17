@@ -5,6 +5,7 @@ export interface Project {
   technologies: string[];
   category: "Professional" | "Academic" | "Open Source" | "Freelance";
   isPrivate: boolean;
+  status?: "Completed" | "In Progress" | "Maintained";
   company?: string;
   contribution: string;
   businessImpact?: string;
@@ -22,6 +23,7 @@ export const projectsData: Project[] = [
     company: "PT Cubiconia Kanaya Pratama",
     category: "Professional",
     isPrivate: true,
+    status: "Completed",
     description:
       "Full-stack development and maintenance of 16+ active corporate client applications, ranging from enterprise web portals to high-performance mobile systems.",
     contribution:

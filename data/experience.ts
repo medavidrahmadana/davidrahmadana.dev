@@ -12,10 +12,32 @@ export interface Experience {
 
 export const experiencesData: Experience[] = [
   {
+    company: "PT Gistex",
+    position: "IT Staff (Functional)",
+    period: "Nov 2026 - Present",
+    isCurrent: true,
+    isPrivate: false,
+    description:
+      "Assisting the corporate migration from SAP to Datatex ERP by serving as the primary functional bridge between the new system and internal business units. Focused on mastering the system, driving user adoption, and maintaining operational stability.",
+    achievements: [
+      "Acted as the functional liaison between internal business departments and the ERP implementation team to ensure seamless workflow transition.",
+      "Conducted comprehensive business process analysis and mapped departmental requirements to Datatex ERP functional modules.",
+      "Facilitated end-user enablement, knowledge transfer, and operational troubleshooting to maximize system adoption and reliability.",
+      "Assisted in data verification, testing, and system validation during the cutover and stabilization phases from SAP.",
+    ],
+    technologies: [
+      "Business Process Analysis",
+      "Functional ERP",
+      "Datatex ERP",
+      "Workflow Analysis",
+      "User Training & Support",
+    ],
+  },
+  {
     company: "PT Cubiconia Kanaya Pratama",
     position: "Software Engineer",
-    period: "Mar 2026 - Present",
-    isCurrent: true,
+    period: "Mar 2026 - Aug 2026",
+    isCurrent: false,
     isPrivate: true,
     description:
       "Contributing to the development and maintenance of 16+ client projects across web, backend, frontend, and mobile applications in a professional team environment.",
